@@ -1,5 +1,6 @@
 #include <jni.h>
 #include <string>
+#include "movie_controller.hpp"
 
 extern "C" JNIEXPORT jstring JNICALL
 Java_com_raquib_movies_MainActivity_stringFromJNI(
