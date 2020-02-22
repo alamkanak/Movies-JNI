@@ -18,6 +18,6 @@ class MovieRepository(private val jniHelper: JniHelper) {
     }
 
     fun getMovieDetail(movieName: String) {
-        
+
     }
 }
