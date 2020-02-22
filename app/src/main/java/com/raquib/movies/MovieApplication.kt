@@ -11,9 +11,10 @@ import timber.log.Timber
 
 class MovieApplication : Application() {
 
-    val appModule = module {
+    private val appModule = module {
         single { JniHelper() }
         single { MovieRepository(get()) }
+        single { MovieAdapter() }
         viewModel { MovieViewModel(get<Application>(), get()) }
     }
 

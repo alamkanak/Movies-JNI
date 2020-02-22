@@ -5,10 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.MovieFragment">
 
-    <TextView
-        android:id="@+id/textView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        android:background="#B8B8B8"
+        android:padding="16dp"
+        android:clipToPadding="true" />
 
 </FrameLayout>
