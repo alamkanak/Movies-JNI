@@ -9,9 +9,11 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.raquib.movies.MovieAdapter
 import com.raquib.movies.R
+import com.raquib.movies.VerticalSpaceItemDecoration
 import kotlinx.android.synthetic.main.movie_fragment.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
+
 
 class MovieFragment : Fragment() {
 
@@ -28,10 +30,13 @@ class MovieFragment : Fragment() {
         // Setup recycler view.
         activity?.let {
             val viewManager = LinearLayoutManager(it)
+            val dividerItemDecoration = VerticalSpaceItemDecoration(recyclerView.context, R.dimen.divider)
+
             recyclerView.apply {
                 setHasFixedSize(true)
                 layoutManager = viewManager
                 adapter = viewAdapter
+                addItemDecoration(dividerItemDecoration)
             }
         }
 

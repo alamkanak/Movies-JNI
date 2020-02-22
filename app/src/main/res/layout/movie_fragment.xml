@@ -9,8 +9,13 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#B8B8B8"
-        android:padding="16dp"
-        android:clipToPadding="true" />
+        android:background="#E9E9E9"
+        android:paddingTop="16dp"
+        android:paddingBottom="4dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:clipToPadding="false"
+        android:scrollbars="vertical"
+        android:scrollbarStyle="outsideOverlay"/>
 
 </FrameLayout>
