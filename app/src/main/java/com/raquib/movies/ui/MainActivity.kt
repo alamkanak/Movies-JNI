@@ -1,8 +1,8 @@
-package com.raquib.movies
+package com.raquib.movies.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
+import com.raquib.movies.R
 
 class MainActivity : AppCompatActivity() {
 

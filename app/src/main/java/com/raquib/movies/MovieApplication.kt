@@ -1,6 +1,7 @@
 package com.raquib.movies
 
 import android.app.Application
+import com.raquib.movies.ui.MovieViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.android.viewmodel.dsl.viewModel

@@ -1,10 +1,11 @@
-package com.raquib.movies
+package com.raquib.movies.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.raquib.movies.R
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MovieFragment : Fragment() {

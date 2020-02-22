@@ -33,3 +33,11 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
     jmethod_movie_setlastupdated = env->GetMethodID(jclass_movie, "setLastUpdated", "(I)V");
     return JNI_VERSION_1_6;
 }
+
+extern "C" JNIEXPORT jobjectArray JNICALL Java_com_raquib_movies_JniHelper_getMovies(JNIEnv *env, jobject) {
+
+}
+
+extern "C" JNIEXPORT jobject JNICALL Java_com_raquib_movies_JniHelper_getMovieDetail(JNIEnv *env, jobject, jstring movieName) {
+
+}
