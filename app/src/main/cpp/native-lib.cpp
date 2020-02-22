@@ -67,5 +67,23 @@ extern "C" JNIEXPORT jobjectArray JNICALL Java_com_raquib_movies_JniHelper_getMo
 }
 
 extern "C" JNIEXPORT jobject JNICALL Java_com_raquib_movies_JniHelper_getMovieDetail(JNIEnv *env, jobject, jstring jmovieName) {
-    
+    const char *movieName = env->GetStringUTFChars(jmovieName, 0);
+    movies::MovieController* controller = new movies::MovieController();
+    movies::MovieDetail *detail = controller->getMovieDetail(movieName);
+
+    jobject jdetail = env->NewObject(jclass_detail, jmethod_detail_init);
+    env->CallVoidMethod(jdetail, jmethod_detail_name, detail->name);
+    env->CallVoidMethod(jdetail, jmethod_detail_description, detail->description);
+    env->CallVoidMethod(jdetail, jmethod_detail_score, detail->score);
+
+    jobjectArray jactors = env->NewObjectArray(detail->actors.size(), jclass_actor, 0);
+    for (int i = 0; i < detail->actors.size(); i++) {
+        jobject jactor = env->NewObject(jclass_actor, jmethod_actor_init);
+        env->CallVoidMethod(jactor, jmethod_actor_name, detail->actors[i].name);
+        env->CallVoidMethod(jactor, jmethod_actor_age, detail->actors[i].age);
+        env->CallVoidMethod(jactor, jmethod_actor_image_url, detail->actors[i].imageUrl);
+        env->SetObjectArrayElement(jactors, i, jactor);
+    }
+    env->CallVoidMethod(jdetail, jmethod_detail_actors, jactors);
+    return jdetail;
 }
