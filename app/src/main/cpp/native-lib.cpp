@@ -59,7 +59,7 @@ extern "C" JNIEXPORT jobjectArray JNICALL Java_com_raquib_movies_JniHelper_getMo
     jobjectArray jmovies = env->NewObjectArray(movies.size(), jclass_movie, 0);
     for (int i = 0; i < movies.size(); i++) {
         jobject jmovie = env->NewObject(jclass_movie, jmethod_movie_init);
-        env->CallVoidMethod(jmovie, jmethod_movie_name, movies[i]->name.c_str());
+        env->CallVoidMethod(jmovie, jmethod_movie_name, env->NewStringUTF(movies[i]->name.c_str()));
         env->CallVoidMethod(jmovie, jmethod_movie_lastupdated, movies[i]->lastUpdated);
         env->SetObjectArrayElement(jmovies, i, jmovie);
     }
@@ -72,16 +72,16 @@ extern "C" JNIEXPORT jobject JNICALL Java_com_raquib_movies_JniHelper_getMovieDe
     movies::MovieDetail *detail = controller->getMovieDetail(movieName);
 
     jobject jdetail = env->NewObject(jclass_detail, jmethod_detail_init);
-    env->CallVoidMethod(jdetail, jmethod_detail_name, detail->name);
-    env->CallVoidMethod(jdetail, jmethod_detail_description, detail->description);
+    env->CallVoidMethod(jdetail, jmethod_detail_name, env->NewStringUTF(detail->name.c_str()));
+    env->CallVoidMethod(jdetail, jmethod_detail_description, env->NewStringUTF(detail->description.c_str()));
     env->CallVoidMethod(jdetail, jmethod_detail_score, detail->score);
 
     jobjectArray jactors = env->NewObjectArray(detail->actors.size(), jclass_actor, 0);
     for (int i = 0; i < detail->actors.size(); i++) {
         jobject jactor = env->NewObject(jclass_actor, jmethod_actor_init);
-        env->CallVoidMethod(jactor, jmethod_actor_name, detail->actors[i].name);
+        env->CallVoidMethod(jactor, jmethod_actor_name, env->NewStringUTF(detail->actors[i].name.c_str()));
         env->CallVoidMethod(jactor, jmethod_actor_age, detail->actors[i].age);
-        env->CallVoidMethod(jactor, jmethod_actor_image_url, detail->actors[i].imageUrl);
+        env->CallVoidMethod(jactor, jmethod_actor_image_url, env->NewStringUTF(detail->actors[i].imageUrl.c_str()));
         env->SetObjectArrayElement(jactors, i, jactor);
     }
     env->CallVoidMethod(jdetail, jmethod_detail_actors, jactors);
