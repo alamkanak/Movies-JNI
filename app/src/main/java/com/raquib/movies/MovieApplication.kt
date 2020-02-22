@@ -14,7 +14,7 @@ class MovieApplication : Application() {
     val appModule = module {
         single { JniHelper() }
         single { MovieRepository(get()) }
-        viewModel { MovieViewModel(get<Application>()) }
+        viewModel { MovieViewModel(get<Application>(), get()) }
     }
 
     override fun onCreate() {

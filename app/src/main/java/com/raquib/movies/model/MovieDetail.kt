@@ -1,3 +1,3 @@
 package com.raquib.movies.model
 
-data class MovieDetail(val name: String, val score: Float, val actors : List<Actor>, val description: String)
+data class MovieDetail(var name: String, var score: Float, var actors : Array<Actor>, var description: String)
