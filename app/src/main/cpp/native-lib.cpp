@@ -6,14 +6,11 @@ static jclass jclass_movie;
 static jmethodID jmethod_movie_init;
 static jmethodID jmethod_movie_setname;
 static jmethodID jmethod_movie_setlastupdated;
-
-extern "C" JNIEXPORT jstring JNICALL
-Java_com_raquib_movies_MainActivity_stringFromJNI(
-        JNIEnv *env,
-        jobject /* this */) {
-    std::string hello = "Hello from C++";
-    return env->NewStringUTF(hello.c_str());
-}
+static jmethodID jmethod_detail_init;
+static jmethodID jmethod_detail_setname;
+static jmethodID jmethod_detail_score;
+static jmethodID jmethod_detail_actors;
+static jmethodID jmethod_detail_description;
 
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
     JNIEnv* env;
@@ -31,6 +28,13 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
     jmethod_movie_init = env->GetMethodID(jclass_movie, "<init>", "()V");
     jmethod_movie_setname = env->GetMethodID(jclass_movie, "setName", "(Ljava/lang/String;)V");
     jmethod_movie_setlastupdated = env->GetMethodID(jclass_movie, "setLastUpdated", "(I)V");
+
+    jmethod_detail_init = env->GetMethodID(jclass_movie, "<init>", "()V");
+    jmethod_detail_setname = env->GetMethodID(jclass_movie, "setName", "(Ljava/lang/String;)V");
+    jmethod_detail_score = env->GetMethodID(jclass_movie, "setScore", "(F)V");
+    jmethod_detail_actors = env->GetMethodID(jclass_movie, "setActors", "([Lcom/raquib/movies/model/Actor;)V");
+    jmethod_detail_description = env->GetMethodID(jclass_movie, "setDescription", "(Ljava/lang/String;)V");
+
     return JNI_VERSION_1_6;
 }
 
