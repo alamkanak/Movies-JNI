@@ -4,7 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".ui.moviedetail.DetailFragment"
-    android:padding="16dp">
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="4dp">
 
     <TextView
         android:id="@+id/textViewTitle"
@@ -21,7 +24,6 @@
         tools:rating="2"
         android:layout_below="@id/textViewTitle"
         style="?android:attr/ratingBarStyleSmall"
-        android:layout_marginBottom="8dp"
         android:layout_marginTop="2dp"
         android:layout_marginRight="8dp"/>
 
@@ -38,6 +40,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="As students at the United States Navy's elite fighter weapons school compete to be best in the class, one daring young pilot learns a few things from a civilian instructor that are not taught in the classroom."
-        android:layout_below="@id/ratingBar"/>
+        android:layout_below="@id/ratingBar"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CASTS"
+        android:layout_below="@id/textViewDescription"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"/>
 
 </RelativeLayout>

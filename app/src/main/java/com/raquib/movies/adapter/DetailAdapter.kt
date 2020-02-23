@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.raquib.movies.R
 import com.raquib.movies.model.Actor
 import com.raquib.movies.model.MovieDetail
+import com.raquib.movies.utils.CircleTransform
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_actor.view.*
 import kotlinx.android.synthetic.main.item_detail_header.view.*
@@ -28,10 +29,15 @@ class DetailAdapter(private val picasso: Picasso) : RecyclerView.Adapter<Recycle
     inner class ActorViewHolder(private val view: ViewGroup) : RecyclerView.ViewHolder(view) {
         fun bind(actor: Actor) {
             if (!TextUtils.isEmpty(actor.imageUrl)) {
-                picasso.load(actor.imageUrl).into(view.imageViewAvatar)
+                picasso.load(actor.imageUrl)
+                    .transform(CircleTransform())
+                    .placeholder(R.drawable.ic_actor_placeholder)
+                    .into(view.imageViewAvatar)
             }
             else {
-                view.imageViewAvatar.setImageDrawable(null)
+                picasso.load(R.drawable.ic_actor_placeholder)
+                    .placeholder(R.drawable.ic_actor_placeholder)
+                    .into(view.imageViewAvatar)
             }
             view.textViewName.text = actor.name
         }
