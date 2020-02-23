@@ -14,9 +14,11 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         tools:background="#7A7A7A"
-        android:layout_marginRight="12dp"/>
+        android:layout_marginRight="12dp"
+        android:scaleType="centerCrop"/>
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/imageViewAvatar"

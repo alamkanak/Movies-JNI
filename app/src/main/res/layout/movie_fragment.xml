@@ -16,6 +16,7 @@
         android:paddingRight="16dp"
         android:clipToPadding="false"
         android:scrollbars="vertical"
-        android:scrollbarStyle="outsideOverlay"/>
+        android:scrollbarStyle="outsideOverlay"
+        tools:listitem="@layout/item_movie"/>
 
 </FrameLayout>

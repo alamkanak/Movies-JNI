@@ -1,11 +1,13 @@
 package com.raquib.movies
 
 import android.app.Application
+import com.raquib.movies.adapter.DetailAdapter
 import com.raquib.movies.adapter.MovieAdapter
 import com.raquib.movies.repo.MovieRepository
 import com.raquib.movies.ui.moviedetail.DetailViewModel
 import com.raquib.movies.ui.movielist.MovieViewModel
 import com.raquib.movies.utils.JniHelper
+import com.squareup.picasso.Picasso
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.android.viewmodel.dsl.viewModel
@@ -19,6 +21,8 @@ class MovieApplication : Application() {
         single { JniHelper() }
         single { MovieRepository(get()) }
         single { MovieAdapter() }
+        single { Picasso.get()!! }
+        single { DetailAdapter(get()) }
         viewModel { MovieViewModel(get(), get()) }
         viewModel {
             DetailViewModel(

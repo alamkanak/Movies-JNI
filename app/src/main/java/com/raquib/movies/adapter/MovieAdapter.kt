@@ -35,6 +35,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     fun setMovies(movies: List<Movie>) {
         this.movies = movies
+        notifyDataSetChanged()
     }
 
     fun setMovieClickListener(listener: MovieClickListener) {

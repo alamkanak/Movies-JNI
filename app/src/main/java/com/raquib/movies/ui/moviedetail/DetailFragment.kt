@@ -7,14 +7,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.raquib.movies.R
+import com.raquib.movies.adapter.DetailAdapter
 import kotlinx.android.synthetic.main.detail_fragment.*
+import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailFragment : Fragment() {
 
     private val viewModel: DetailViewModel by viewModel()
     private val args: DetailFragmentArgs by navArgs()
+    private val adapter: DetailAdapter by inject()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.detail_fragment, container, false)
@@ -22,11 +26,20 @@ class DetailFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        // Setup recycler view.
+        activity?.let {
+            val viewManager = LinearLayoutManager(it)
+            recyclerView.apply {
+                setHasFixedSize(true)
+                layoutManager = viewManager
+                adapter = this@DetailFragment.adapter
+            }
+        }
+
+        // Display movie detail.
         viewModel.getMovieDetail(args.movieName).observe(viewLifecycleOwner, Observer {
-            textViewTitle.text = it.name
-            ratingBar.rating = 5*it.score/10
-            textViewRating.text = getString(R.string.rating, it.score)
-            textViewDescription.text = it.description
+            adapter.setMovieDetail(it)
         })
     }
 }
