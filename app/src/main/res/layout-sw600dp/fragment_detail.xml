@@ -6,16 +6,11 @@
     tools:context=".ui.moviedetail.DetailFragment"
     android:background="#fff">
 
-    <include
-        android:id="@+id/toolbarContainer"
-        layout="@layout/toolbar"/>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
-        tools:listitem="@layout/item_actor"
-        android:layout_below="@id/toolbarContainer"/>
+        tools:listitem="@layout/item_actor"/>
 
 </RelativeLayout>

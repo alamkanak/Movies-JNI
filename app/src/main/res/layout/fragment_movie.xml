@@ -3,12 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.movielist.MovieFragment">
+    tools:context=".ui.movielist.MovieFragment"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbarContainer"
+        layout="@layout/toolbar"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:background="#E9E9E9"
         android:paddingTop="16dp"
         android:paddingBottom="8dp"

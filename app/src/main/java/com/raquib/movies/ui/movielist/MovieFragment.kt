@@ -15,7 +15,9 @@ import com.raquib.movies.adapter.MovieAdapter
 import com.raquib.movies.adapter.MovieClickListener
 import com.raquib.movies.model.Movie
 import com.raquib.movies.utils.VerticalSpaceItemDecoration
+import com.raquib.movies.utils.setupToolbar
 import kotlinx.android.synthetic.main.fragment_movie.*
+import kotlinx.android.synthetic.main.toolbar.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -62,6 +64,10 @@ class MovieFragment : Fragment() {
                 }
             }
         })
+
+        activity?.let {
+            setupToolbar(it, toolbar)
+        }
 
         // Observe movies from data source. And show them in the list.
         viewModel.getMovies().observe(viewLifecycleOwner, Observer {
