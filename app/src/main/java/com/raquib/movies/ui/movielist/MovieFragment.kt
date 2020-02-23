@@ -42,10 +42,7 @@ class MovieFragment : Fragment() {
         activity?.let {
             val viewManager = LinearLayoutManager(it)
             val dividerItemDecoration =
-                VerticalSpaceItemDecoration(
-                    recyclerView.context,
-                    R.dimen.divider
-                )
+                VerticalSpaceItemDecoration(recyclerView.context, R.dimen.divider)
             recyclerView.apply {
                 setHasFixedSize(true)
                 layoutManager = viewManager
