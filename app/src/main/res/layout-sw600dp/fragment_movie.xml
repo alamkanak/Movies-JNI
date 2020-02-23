@@ -9,28 +9,40 @@
     <include android:id="@+id/toolbarContainer"
         layout="@layout/toolbar"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <FrameLayout
+        android:id="@+id/frameLayoutListContainer"
         android:layout_width="@dimen/master_width"
         android:layout_height="match_parent"
-        android:background="#E9E9E9"
-        android:paddingTop="16dp"
-        android:paddingBottom="8dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:clipToPadding="false"
-        android:scrollbars="vertical"
-        android:scrollbarStyle="outsideOverlay"
-        tools:listitem="@layout/item_movie"
-        android:layout_below="@id/toolbarContainer"/>
+        android:layout_below="@id/toolbarContainer">
+
+        <include layout="@layout/view_shimmer"
+            tools:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#E9E9E9"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:clipToPadding="false"
+            android:scrollbars="vertical"
+            android:scrollbarStyle="outsideOverlay"
+            tools:listitem="@layout/item_movie"/>
+
+    </FrameLayout>
 
     <fragment
         android:id="@+id/nav_host_fragment_tablet"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_toRightOf="@id/recyclerView"
         android:layout_below="@id/toolbarContainer"
-        app:navGraph="@navigation/nav_graph_tablet" />
+        app:navGraph="@navigation/nav_graph_tablet"
+        android:layout_toRightOf="@+id/frameLayoutListContainer"/>
 
 </RelativeLayout>

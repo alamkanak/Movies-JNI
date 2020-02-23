@@ -11,29 +11,33 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageViewAvatar"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         tools:background="#7A7A7A"
         android:layout_marginRight="12dp"
         android:scaleType="centerCrop"/>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textViewName"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_toRightOf="@id/imageViewAvatar"
-        tools:text="Tom Cruise"
-        android:layout_marginTop="2dp"/>
+        android:layout_centerVertical="true">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textViewAge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/imageViewAvatar"
-        tools:text="Age 3"
-        android:layout_centerVertical="true"
-        android:layout_below="@id/textViewName"
-        android:textSize="12sp"
-        android:textColor="#ACACAC"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Tom Cruise"
+            android:textColor="#000"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Age 3"
+            android:textColor="#ACACAC"/>
+
+    </LinearLayout>
 
 </RelativeLayout>

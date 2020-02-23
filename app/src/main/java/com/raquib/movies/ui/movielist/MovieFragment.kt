@@ -15,10 +15,12 @@ import com.raquib.movies.R
 import com.raquib.movies.adapter.MovieAdapter
 import com.raquib.movies.adapter.MovieClickListener
 import com.raquib.movies.model.Movie
+import com.raquib.movies.model.Resource
 import com.raquib.movies.utils.VerticalSpaceItemDecoration
 import com.raquib.movies.utils.setupToolbar
 import kotlinx.android.synthetic.main.fragment_movie.*
 import kotlinx.android.synthetic.main.toolbar.*
+import kotlinx.android.synthetic.main.view_shimmer.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -73,7 +75,19 @@ class MovieFragment : Fragment() {
 
         // Observe movies from data source. And show them in the list.
         viewModel.getMovies().observe(viewLifecycleOwner, Observer {
-            adapter.setMovies(it)
+            when (it.getStatus()) {
+                Resource.Status.SUCCESS -> {
+                    shimmerFrameLayout.visibility = View.GONE
+                    recyclerView.visibility = View.VISIBLE
+                    it.data?.let {movies ->
+                        adapter.setMovies(movies)
+                    }
+                }
+                else -> {
+                    shimmerFrameLayout.visibility = View.VISIBLE
+                    recyclerView.visibility = View.GONE
+                }
+            }
         })
 
         // Restore selected position in the list.

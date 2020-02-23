@@ -5,19 +5,21 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.raquib.movies.model.Movie
+import com.raquib.movies.model.Resource
 import com.raquib.movies.repo.MovieRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class MovieViewModel(application: Application, private val movieRepository: MovieRepository) : AndroidViewModel(application) {
 
-    private val moviesLiveData = MutableLiveData<List<Movie>>()
+    private val moviesLiveData = MutableLiveData<Resource<List<Movie>>>()
 
     init {
+        moviesLiveData.postValue(Resource.loading())
         viewModelScope.launch(Dispatchers.IO) {
-            moviesLiveData.postValue(movieRepository.getMovies())
-            Timber.d(movieRepository.getMovieDetail(movieRepository.getMovies()[0].name).actors[0].name)
+            delay(5000)
+            moviesLiveData.postValue(Resource.success(movieRepository.getMovies()))
         }
     }
 
