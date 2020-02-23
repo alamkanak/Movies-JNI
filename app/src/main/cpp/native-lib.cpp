@@ -53,7 +53,7 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
     return JNI_VERSION_1_6;
 }
 
-extern "C" JNIEXPORT jobjectArray JNICALL Java_com_raquib_movies_JniHelper_getMovies(JNIEnv *env, jobject) {
+extern "C" JNIEXPORT jobjectArray JNICALL Java_com_raquib_movies_utils_JniHelper_getMovies(JNIEnv *env, jobject) {
     movies::MovieController* controller = new movies::MovieController();
     const std::vector<movies::Movie *> movies = controller->getMovies();
     jobjectArray jmovies = env->NewObjectArray(movies.size(), jclass_movie, 0);
@@ -66,7 +66,7 @@ extern "C" JNIEXPORT jobjectArray JNICALL Java_com_raquib_movies_JniHelper_getMo
     return jmovies;
 }
 
-extern "C" JNIEXPORT jobject JNICALL Java_com_raquib_movies_JniHelper_getMovieDetail(JNIEnv *env, jobject, jstring jmovieName) {
+extern "C" JNIEXPORT jobject JNICALL Java_com_raquib_movies_utils_JniHelper_getMovieDetail(JNIEnv *env, jobject, jstring jmovieName) {
     const char *movieName = env->GetStringUTFChars(jmovieName, 0);
     movies::MovieController* controller = new movies::MovieController();
     movies::MovieDetail *detail = controller->getMovieDetail(movieName);
