@@ -10,7 +10,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.raquib.movies.R
 import com.raquib.movies.adapter.DetailAdapter
-import kotlinx.android.synthetic.main.detail_fragment.*
+import kotlinx.android.synthetic.main.fragment_detail.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -21,7 +21,7 @@ class DetailFragment : Fragment() {
     private val adapter: DetailAdapter by inject()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.detail_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_detail, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

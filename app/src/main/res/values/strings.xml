@@ -4,4 +4,5 @@
     <string name="rating">%.01f/10</string>
     <string name="casts">CASTS</string>
     <string name="age">Age: %d</string>
+    <string name="hint_movie_select">Please select a movie from the list on the left</string>
 </resources>
