@@ -2,4 +2,6 @@
     <string name="app_name">Movies</string>
     <string name="last_updated">Last updated at %d</string>
     <string name="rating">%.01f/10</string>
+    <string name="casts">CASTS</string>
+    <string name="age">Age: %d</string>
 </resources>

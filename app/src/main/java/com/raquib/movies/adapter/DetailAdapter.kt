@@ -40,6 +40,7 @@ class DetailAdapter(private val picasso: Picasso) : RecyclerView.Adapter<Recycle
                     .into(view.imageViewAvatar)
             }
             view.textViewName.text = actor.name
+            view.textViewAge.text = view.context.getString(R.string.age, actor.age)
         }
     }
 

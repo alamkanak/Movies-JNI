@@ -23,6 +23,17 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/imageViewAvatar"
         tools:text="Tom Cruise"
-        android:layout_centerVertical="true"/>
+        android:layout_marginTop="2dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/imageViewAvatar"
+        tools:text="Age 3"
+        android:layout_centerVertical="true"
+        android:layout_below="@id/textViewName"
+        android:textSize="12sp"
+        android:textColor="#ACACAC"/>
 
 </RelativeLayout>
