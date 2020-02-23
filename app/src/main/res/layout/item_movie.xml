@@ -3,12 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#fff"
     android:foreground="?selectableItemBackground"
     android:clickable="true"
     android:focusable="true">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -24,15 +25,28 @@
             tools:text="Top Gun"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:layout_marginBottom="2dp"
-            android:textColor="#000"/>
+            android:textColor="#000"
+            android:layout_toLeftOf="@id/imageViewIndicator"/>
 
         <TextView
             android:id="@+id/textViewDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="Last updated at 100"
-            android:layout_marginBottom="4dp"/>
+            android:layout_marginBottom="4dp"
+            android:layout_below="@id/textViewTitle"
+            android:layout_toLeftOf="@id/imageViewIndicator"/>
 
-    </LinearLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_circle"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            tools:visibility="visible"/>
+
+    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

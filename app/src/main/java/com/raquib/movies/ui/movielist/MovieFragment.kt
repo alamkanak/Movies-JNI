@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.SimpleItemAnimator
 import com.raquib.movies.R
 import com.raquib.movies.adapter.MovieAdapter
 import com.raquib.movies.adapter.MovieClickListener
@@ -23,8 +24,10 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class MovieFragment : Fragment() {
 
+    private var selectedPosition: Int = -1
     private val viewModel: MovieViewModel by viewModel()
     private val adapter: MovieAdapter by inject()
+    private val KEY_SELECTED_POSITION = "selectedPosition"
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_movie, container, false)
@@ -49,12 +52,14 @@ class MovieFragment : Fragment() {
                 adapter = this@MovieFragment.adapter
                 addItemDecoration(dividerItemDecoration)
             }
+            (recyclerView.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
         }
 
         // Open detail view when a movie is clicked.
         adapter.setMovieClickListener(object:
             MovieClickListener {
-            override fun onMovieClick(movie: Movie) {
+            override fun onMovieClick(movie: Movie, position: Int) {
+                selectedPosition = position
                 if (isTablet) {
                     val navHostFragment = childFragmentManager.findFragmentById(R.id.nav_host_fragment_tablet) as NavHostFragment
                     navHostFragment.navController.navigate(R.id.detailFragment, bundleOf("movieName" to movie.name))
@@ -73,5 +78,18 @@ class MovieFragment : Fragment() {
         viewModel.getMovies().observe(viewLifecycleOwner, Observer {
             adapter.setMovies(it)
         })
+
+        // Restore selected position in the list.
+        if (isTablet) {
+            selectedPosition = savedInstanceState?.getInt(KEY_SELECTED_POSITION, selectedPosition) ?: selectedPosition
+            if (selectedPosition >= 0) {
+                adapter.setSelectedPosition(selectedPosition)
+            }
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(KEY_SELECTED_POSITION, selectedPosition)
     }
 }

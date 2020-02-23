@@ -1,6 +1,7 @@
 package com.raquib.movies.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.raquib.movies.R
@@ -11,13 +12,27 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     private var clickListener: MovieClickListener? = null
     private var movies: List<Movie> = listOf()
+    private var focusedItem = -1
 
     inner class ViewHolder(private val view: ViewGroup) : RecyclerView.ViewHolder(view) {
         fun bind(movie: Movie) {
             view.textViewTitle.text = movie.name
             view.textViewDescription.text = view.context.getString(R.string.last_updated, movie.lastUpdated)
+
+            if (adapterPosition == focusedItem) {
+                view.imageViewIndicator.visibility = View.VISIBLE
+            }
+            else {
+                view.imageViewIndicator.visibility = View.GONE
+            }
+
             view.setOnClickListener {
-                clickListener?.onMovieClick(movie)
+                if (view.resources.getBoolean(R.bool.is_tablet)) {
+                    notifyItemChanged(focusedItem)
+                    focusedItem = adapterPosition
+                    notifyItemChanged(focusedItem)
+                }
+                clickListener?.onMovieClick(movie, adapterPosition)
             }
         }
     }
@@ -40,5 +55,10 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     fun setMovieClickListener(listener: MovieClickListener) {
         this.clickListener = listener
+    }
+
+    fun setSelectedPosition(selectedPosition: Int) {
+        focusedItem = selectedPosition
+        notifyItemChanged(focusedItem)
     }
 }

@@ -23,9 +23,10 @@
         android:layout_height="wrap_content"
         tools:rating="2"
         android:layout_below="@id/textViewTitle"
-        style="?android:attr/ratingBarStyleSmall"
+        style="?ratingBarStyleSmall"
+        android:theme="@style/AppTheme.RatingBar"
         android:layout_marginTop="2dp"
-        android:layout_marginRight="8dp"/>
+        android:layout_marginRight="8dp" />
 
     <TextView
         android:id="@+id/textViewRating"
