@@ -1,4 +1,4 @@
-package com.raquib.movies
+package com.raquib.movies.utils
 
 import android.content.Context
 import android.graphics.Rect

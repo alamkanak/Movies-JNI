@@ -1,8 +1,9 @@
-package com.raquib.movies
+package com.raquib.movies.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.raquib.movies.R
 import com.raquib.movies.model.Movie
 import kotlinx.android.synthetic.main.item_movie.view.*
 

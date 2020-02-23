@@ -1,4 +1,4 @@
-package com.raquib.movies
+package com.raquib.movies.utils
 
 import com.raquib.movies.model.Movie
 import com.raquib.movies.model.MovieDetail

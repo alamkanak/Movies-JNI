@@ -1,4 +1,4 @@
-package com.raquib.movies
+package com.raquib.movies.adapter
 
 import com.raquib.movies.model.Movie
 

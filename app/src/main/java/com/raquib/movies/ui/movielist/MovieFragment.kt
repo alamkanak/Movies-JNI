@@ -1,4 +1,4 @@
-package com.raquib.movies.ui
+package com.raquib.movies.ui.movielist
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,10 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.raquib.movies.MovieAdapter
-import com.raquib.movies.MovieClickListener
+import com.raquib.movies.adapter.MovieAdapter
+import com.raquib.movies.adapter.MovieClickListener
 import com.raquib.movies.R
-import com.raquib.movies.VerticalSpaceItemDecoration
+import com.raquib.movies.utils.VerticalSpaceItemDecoration
 import com.raquib.movies.model.Movie
 import kotlinx.android.synthetic.main.movie_fragment.*
 import org.koin.android.ext.android.inject
@@ -33,7 +33,11 @@ class MovieFragment : Fragment() {
         // Setup recycler view.
         activity?.let {
             val viewManager = LinearLayoutManager(it)
-            val dividerItemDecoration = VerticalSpaceItemDecoration(recyclerView.context, R.dimen.divider)
+            val dividerItemDecoration =
+                VerticalSpaceItemDecoration(
+                    recyclerView.context,
+                    R.dimen.divider
+                )
             recyclerView.apply {
                 setHasFixedSize(true)
                 layoutManager = viewManager
@@ -43,9 +47,14 @@ class MovieFragment : Fragment() {
         }
 
         // Open detail view when a movie is clicked.
-        viewAdapter.setMovieClickListener(object:MovieClickListener {
+        viewAdapter.setMovieClickListener(object:
+            MovieClickListener {
             override fun onMovieClick(movie: Movie) {
-                findNavController().navigate(MovieFragmentDirections.actionMovieFragmentToDetailFragment(movie.name))
+                findNavController().navigate(
+                    MovieFragmentDirections.actionMovieFragmentToDetailFragment(
+                        movie.name
+                    )
+                )
             }
         })
 

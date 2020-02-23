@@ -1,8 +1,11 @@
 package com.raquib.movies
 
 import android.app.Application
-import com.raquib.movies.ui.DetailViewModel
-import com.raquib.movies.ui.MovieViewModel
+import com.raquib.movies.adapter.MovieAdapter
+import com.raquib.movies.repo.MovieRepository
+import com.raquib.movies.ui.moviedetail.DetailViewModel
+import com.raquib.movies.ui.movielist.MovieViewModel
+import com.raquib.movies.utils.JniHelper
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.android.viewmodel.dsl.viewModel
@@ -17,7 +20,12 @@ class MovieApplication : Application() {
         single { MovieRepository(get()) }
         single { MovieAdapter() }
         viewModel { MovieViewModel(get(), get()) }
-        viewModel { DetailViewModel(get()) }
+        viewModel {
+            DetailViewModel(
+                get(),
+                get()
+            )
+        }
     }
 
     override fun onCreate() {

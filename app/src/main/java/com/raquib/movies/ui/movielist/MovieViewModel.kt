@@ -1,11 +1,11 @@
-package com.raquib.movies.ui
+package com.raquib.movies.ui.movielist
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.raquib.movies.MovieRepository
 import com.raquib.movies.model.Movie
+import com.raquib.movies.repo.MovieRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -22,6 +22,5 @@ class MovieViewModel(application: Application, private val movieRepository: Movi
     }
 
     fun getMovies() = moviesLiveData
-    fun getMovieDetail(movieName: String) = movieRepository.getMovieDetail(movieName)
 
 }

@@ -1,4 +1,4 @@
-package com.raquib.movies.ui
+package com.raquib.movies.ui.moviedetail
 
 import android.os.Bundle
 import android.view.LayoutInflater

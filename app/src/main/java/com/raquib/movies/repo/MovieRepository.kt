@@ -1,8 +1,6 @@
-package com.raquib.movies
+package com.raquib.movies.repo
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.raquib.movies.model.Movie
+import com.raquib.movies.utils.JniHelper
 
 class MovieRepository(private val jniHelper: JniHelper) {
     fun getMovies() = jniHelper.getMovies().asList()

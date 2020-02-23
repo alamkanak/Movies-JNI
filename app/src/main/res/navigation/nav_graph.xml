@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/movieFragment"
-        android:name="com.raquib.movies.ui.MovieFragment"
+        android:name="com.raquib.movies.ui.movielist.MovieFragment"
         android:label="movie_fragment"
         tools:layout="@layout/movie_fragment" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.raquib.movies.ui.DetailFragment"
+        android:name="com.raquib.movies.ui.moviedetail.DetailFragment"
         android:label="detail_fragment"
         tools:layout="@layout/detail_fragment" >
         <argument
