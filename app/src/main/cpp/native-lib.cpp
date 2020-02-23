@@ -17,12 +17,16 @@ static jmethodID jmethod_actor_init;
 static jmethodID jmethod_actor_name;
 static jmethodID jmethod_actor_age;
 static jmethodID jmethod_actor_image_url;
+movies::MovieController *controller;
 
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
     JNIEnv* env;
     if (vm->GetEnv(reinterpret_cast<void**>(&env), JNI_VERSION_1_6) != JNI_OK) {
         return JNI_ERR;
     }
+
+    // Initialize movie controller.
+    controller = new movies::MovieController();
 
     // Get POJO class names.
     jclass_movie = reinterpret_cast<jclass>(env->NewGlobalRef(env->FindClass("com/raquib/movies/model/Movie")));
@@ -54,7 +58,6 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 }
 
 extern "C" JNIEXPORT jobjectArray JNICALL Java_com_raquib_movies_utils_JniHelper_getMovies(JNIEnv *env, jobject) {
-    movies::MovieController* controller = new movies::MovieController();
     const std::vector<movies::Movie *> movies = controller->getMovies();
     jobjectArray jmovies = env->NewObjectArray(movies.size(), jclass_movie, 0);
     for (int i = 0; i < movies.size(); i++) {
@@ -68,7 +71,6 @@ extern "C" JNIEXPORT jobjectArray JNICALL Java_com_raquib_movies_utils_JniHelper
 
 extern "C" JNIEXPORT jobject JNICALL Java_com_raquib_movies_utils_JniHelper_getMovieDetail(JNIEnv *env, jobject, jstring jmovieName) {
     const char *movieName = env->GetStringUTFChars(jmovieName, 0);
-    movies::MovieController* controller = new movies::MovieController();
     movies::MovieDetail *detail = controller->getMovieDetail(movieName);
 
     jobject jdetail = env->NewObject(jclass_detail, jmethod_detail_init);

@@ -52,7 +52,7 @@ class DetailFragment : Fragment() {
             adapter.setMovieDetail(movie)
             if (!isTablet) {
                 activity?.let {
-                    val actionBar = setupToolbar(it, toolbar, movie.name, true)
+                    setupToolbar(it, toolbar, movie.name, true)
                 }
             }
         })
