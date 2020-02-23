@@ -6,17 +6,8 @@ static jclass jclass_movie;
 static jclass jclass_detail;
 static jclass jclass_actor;
 static jmethodID jmethod_movie_init;
-//static jmethodID jmethod_movie_name;
-//static jmethodID jmethod_movie_lastupdated;
 static jmethodID jmethod_detail_init;
-//static jmethodID jmethod_detail_name;
-//static jmethodID jmethod_detail_score;
-//static jmethodID jmethod_detail_actors;
-//static jmethodID jmethod_detail_description;
 static jmethodID jmethod_actor_init;
-//static jmethodID jmethod_actor_name;
-//static jmethodID jmethod_actor_age;
-//static jmethodID jmethod_actor_image_url;
 movies::MovieController *controller;
 
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {

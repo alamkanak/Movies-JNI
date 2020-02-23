@@ -10,6 +10,13 @@
         android:id="@+id/toolbarContainer"
         layout="@layout/toolbar"/>
 
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbarContainer"
+        layout="@layout/view_shimmer"
+        tools:visibility="gone"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"

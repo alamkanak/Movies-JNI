@@ -24,12 +24,7 @@ class MovieApplication : Application() {
         single { Picasso.get()!! }
         single { DetailAdapter(get()) }
         viewModel { MovieViewModel(get(), get()) }
-        viewModel {
-            DetailViewModel(
-                get(),
-                get()
-            )
-        }
+        viewModel { DetailViewModel(get(), get()) }
     }
 
     override fun onCreate() {

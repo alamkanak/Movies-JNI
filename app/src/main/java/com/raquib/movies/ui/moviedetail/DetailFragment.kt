@@ -12,9 +12,11 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.raquib.movies.R
 import com.raquib.movies.adapter.DetailAdapter
+import com.raquib.movies.model.Resource
 import com.raquib.movies.utils.setupToolbar
 import kotlinx.android.synthetic.main.fragment_detail.*
 import kotlinx.android.synthetic.main.toolbar.*
+import kotlinx.android.synthetic.main.view_shimmer.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -48,11 +50,23 @@ class DetailFragment : Fragment() {
         }
 
         // Display movie detail.
-        viewModel.getMovieDetail(args.movieName).observe(viewLifecycleOwner, Observer { movie ->
-            adapter.setMovieDetail(movie)
-            if (!isTablet) {
-                activity?.let {
-                    setupToolbar(it, toolbar, movie.name, true)
+        viewModel.getMovieDetail(args.movieName).observe(viewLifecycleOwner, Observer { resource ->
+            when (resource.getStatus()) {
+                Resource.Status.SUCCESS -> {
+                    shimmerFrameLayout.visibility = View.GONE
+                    recyclerView.visibility = View.VISIBLE
+                    resource.data?.let { movie ->
+                        adapter.setMovieDetail(movie)
+                        if (!isTablet) {
+                            activity?.let {
+                                setupToolbar(it, toolbar, movie.name, true)
+                            }
+                        }
+                    }
+                }
+                Resource.Status.LOADING -> {
+                    shimmerFrameLayout.visibility = View.VISIBLE
+                    recyclerView.visibility = View.GONE
                 }
             }
         })
