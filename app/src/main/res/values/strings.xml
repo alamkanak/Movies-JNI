@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Movies</string>
+    <string name="last_updated">Last updated at %d</string>
 </resources>

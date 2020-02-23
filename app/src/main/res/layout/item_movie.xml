@@ -3,13 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#fff">
+    android:background="#fff"
+    android:foreground="?selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp">
 
         <TextView
             android:id="@+id/textViewTitle"
@@ -17,13 +23,14 @@
             android:layout_height="wrap_content"
             tools:text="Top Gun"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:layout_marginBottom="4dp"/>
+            android:layout_marginBottom="2dp"
+            android:textColor="#000"/>
 
         <TextView
             android:id="@+id/textViewDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="As students at the United States Navy's elite fighter weapons school compete to be best in the class, one daring young pilot learns a few things from a civilian instructor that are not taught in the classroom."
+            tools:text="Last updated at 100"
             android:layout_marginBottom="4dp"/>
 
     </LinearLayout>

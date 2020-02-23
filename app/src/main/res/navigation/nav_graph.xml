@@ -9,5 +9,18 @@
         android:id="@+id/movieFragment"
         android:name="com.raquib.movies.ui.MovieFragment"
         android:label="movie_fragment"
-        tools:layout="@layout/movie_fragment" />
+        tools:layout="@layout/movie_fragment" >
+        <action
+            android:id="@+id/action_movieFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.raquib.movies.ui.DetailFragment"
+        android:label="detail_fragment"
+        tools:layout="@layout/detail_fragment" >
+        <argument
+            android:name="movieName"
+            app:argType="string" />
+    </fragment>
 </navigation>

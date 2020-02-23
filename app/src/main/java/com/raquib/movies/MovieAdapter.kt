@@ -8,12 +8,16 @@ import kotlinx.android.synthetic.main.item_movie.view.*
 
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
+    private var clickListener: MovieClickListener? = null
     private var movies: List<Movie> = listOf()
 
-    class ViewHolder(private val view: ViewGroup) : RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(private val view: ViewGroup) : RecyclerView.ViewHolder(view) {
         fun bind(movie: Movie) {
             view.textViewTitle.text = movie.name
-            view.textViewDescription.text = "abcd"
+            view.textViewDescription.text = view.context.getString(R.string.last_updated, movie.lastUpdated)
+            view.setOnClickListener {
+                clickListener?.onMovieClick(movie)
+            }
         }
     }
 
@@ -30,5 +34,9 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     fun setMovies(movies: List<Movie>) {
         this.movies = movies
+    }
+
+    fun setMovieClickListener(listener: MovieClickListener) {
+        this.clickListener = listener
     }
 }
