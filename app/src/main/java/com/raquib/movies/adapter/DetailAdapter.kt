@@ -3,6 +3,7 @@ package com.raquib.movies.adapter
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatDrawableManager
 import androidx.recyclerview.widget.RecyclerView
 import com.raquib.movies.R
 import com.raquib.movies.model.Actor
@@ -28,17 +29,22 @@ class DetailAdapter(private val picasso: Picasso) : RecyclerView.Adapter<Recycle
 
     inner class ActorViewHolder(private val view: ViewGroup) : RecyclerView.ViewHolder(view) {
         fun bind(actor: Actor) {
+
+            // Use this method for vector backward compatibility.
+            val placeholder = AppCompatDrawableManager.get().getDrawable(view.context, R.drawable.ic_actor_placeholder)
+
+            // Display avatar.
             if (!TextUtils.isEmpty(actor.imageUrl)) {
                 picasso.load(actor.imageUrl)
                     .transform(CircleTransform())
-                    .placeholder(R.drawable.ic_actor_placeholder)
+                    .placeholder(placeholder)
                     .into(view.imageViewAvatar)
             }
             else {
-                picasso.load(R.drawable.ic_actor_placeholder)
-                    .placeholder(R.drawable.ic_actor_placeholder)
-                    .into(view.imageViewAvatar)
+                view.imageViewAvatar.setImageResource(R.drawable.ic_actor_placeholder)
             }
+
+            // Display texts.
             view.textViewName.text = actor.name
             view.textViewAge.text = view.context.getString(R.string.age, actor.age)
         }
