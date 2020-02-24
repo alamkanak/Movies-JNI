@@ -13,7 +13,7 @@
         android:id="@+id/imageViewAvatar"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        tools:background="#7A7A7A"
+        tools:background="@color/muted"
         android:layout_marginRight="12dp"
         android:scaleType="centerCrop"/>
 
@@ -29,14 +29,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="Tom Cruise"
-            android:textColor="#000"/>
+            android:textColor="@color/text_dark"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewAge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="Age 3"
-            android:textColor="#ACACAC"/>
+            android:textColor="@color/text_light"/>
 
     </LinearLayout>
 

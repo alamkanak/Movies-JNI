@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#fff"
+    android:background="@color/background"
     android:foreground="?selectableItemBackground"
     android:clickable="true"
     android:focusable="true">
@@ -25,7 +25,7 @@
             tools:text="Top Gun"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:layout_marginBottom="2dp"
-            android:textColor="#000"
+            android:textColor="@color/text_dark"
             android:layout_toLeftOf="@id/imageViewIndicator"/>
 
         <TextView
