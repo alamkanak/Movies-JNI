@@ -1,4 +1,4 @@
-package com.raquib.movies.ui.moviedetail
+package com.raquib.movies.ui.detail
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

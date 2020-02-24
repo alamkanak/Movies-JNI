@@ -4,6 +4,9 @@ import android.graphics.*
 import com.squareup.picasso.Transformation
 import kotlin.math.min
 
+/**
+ * Picasso transformer to turn images into circular shapes.
+ */
 class CircleTransform : Transformation {
 
     override fun key(): String {

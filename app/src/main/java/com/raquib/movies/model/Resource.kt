@@ -1,8 +1,9 @@
 package com.raquib.movies.model
 
-class Resource<T> private constructor(status: Status, data: T?, message: String?) {
-    private val status: Status = status
-    val data: T? = data
+/**
+ * Wrapper class for data models allowing the ability to represent SUCCESS and LOADING states.
+ */
+class Resource<T> private constructor(private val status: Status, val data: T?) {
 
     fun getStatus(): Status {
         return status
@@ -10,11 +11,11 @@ class Resource<T> private constructor(status: Status, data: T?, message: String?
 
     companion object {
         fun <T> success(data: T): Resource<T> {
-            return Resource(Status.SUCCESS, data, null)
+            return Resource(Status.SUCCESS, data)
         }
 
         fun <T> loading(): Resource<T> {
-            return Resource(Status.LOADING, null, null)
+            return Resource(Status.LOADING, null)
         }
     }
 

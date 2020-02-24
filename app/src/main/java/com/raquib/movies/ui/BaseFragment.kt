@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.toolbar.*
 
+/**
+ * The parent class of all fragments allowing them to customize the toolbar.
+ */
 abstract class BaseFragment : Fragment() {
 
     fun setupToolbar(title: String? = null, hasBackButton: Boolean = false) {

@@ -4,7 +4,7 @@ import android.app.Application
 import com.raquib.movies.adapter.DetailAdapter
 import com.raquib.movies.adapter.MovieAdapter
 import com.raquib.movies.repo.MovieRepository
-import com.raquib.movies.ui.moviedetail.DetailViewModel
+import com.raquib.movies.ui.detail.DetailViewModel
 import com.raquib.movies.ui.movielist.MovieViewModel
 import com.raquib.movies.utils.JniHelper
 import com.squareup.picasso.Picasso
@@ -30,6 +30,7 @@ class MovieApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
+        // Setup logging with Timber.
         if (BuildConfig.DEBUG) {
             Timber.plant(object : Timber.DebugTree() {
                 override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
@@ -38,6 +39,7 @@ class MovieApplication : Application() {
             })
         }
 
+        // Setup dependency injection with Koin.
         startKoin {
             androidLogger()
             androidContext(this@MovieApplication)

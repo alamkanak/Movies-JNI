@@ -8,6 +8,9 @@ import com.raquib.movies.R
 import com.raquib.movies.model.Movie
 import kotlinx.android.synthetic.main.item_movie.view.*
 
+/**
+ * Adapter for showing movies in a recycler view.
+ */
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     private var clickListener: MovieClickListener? = null
@@ -19,6 +22,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
             view.textViewTitle.text = movie.name
             view.textViewDescription.text = view.context.getString(R.string.last_updated, movie.lastUpdated)
 
+            // In tablet mode (master-detail mode), we want to display the selected item.
             if (adapterPosition == focusedItem) {
                 view.imageViewIndicator.visibility = View.VISIBLE
             }
@@ -26,6 +30,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
                 view.imageViewIndicator.visibility = View.GONE
             }
 
+            // Handle movie click.
             view.setOnClickListener {
                 if (view.resources.getBoolean(R.bool.is_tablet)) {
                     notifyItemChanged(focusedItem)

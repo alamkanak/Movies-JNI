@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.raquib.movies.ui.moviedetail.DetailFragment"
+        android:name="com.raquib.movies.ui.detail.DetailFragment"
         android:label="detail_fragment"
         tools:layout="@layout/fragment_detail" >
         <argument

@@ -11,10 +11,12 @@ class JniHelper {
     external suspend fun getMovies(): Array<Movie>
     external suspend fun getMovieDetail(name: String): MovieDetail
 
-    init {
-        GlobalScope.launch(Dispatchers.Default) {
-            Timber.d("Init native lib")
-            System.loadLibrary("native-lib")
+    companion object {
+        init {
+            GlobalScope.launch(Dispatchers.Default) {
+                Timber.d("Init native lib")
+                System.loadLibrary("native-lib")
+            }
         }
     }
 }

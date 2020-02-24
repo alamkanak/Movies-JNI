@@ -22,6 +22,9 @@ import kotlinx.android.synthetic.main.view_shimmer.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
+/**
+ * Fragment to display movie lists.
+ */
 class MovieFragment : BaseFragment() {
 
     private var selectedPosition: Int = -1

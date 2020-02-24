@@ -1,4 +1,4 @@
-package com.raquib.movies.ui.moviedetail
+package com.raquib.movies.ui.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,6 +18,9 @@ import kotlinx.android.synthetic.main.view_shimmer.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
+/**
+ * Fragment that displays details about a movie in the UI.
+ */
 class DetailFragment : BaseFragment() {
 
     private val viewModel: DetailViewModel by viewModel()
@@ -51,8 +54,12 @@ class DetailFragment : BaseFragment() {
         viewModel.getMovieDetail(args.movieName).observe(viewLifecycleOwner, Observer { resource ->
             when (resource.getStatus()) {
                 Resource.Status.SUCCESS -> {
+
+                    // Hide loading animation.
                     shimmerFrameLayout.visibility = View.GONE
                     recyclerView.visibility = View.VISIBLE
+
+                    // Display detail in the UI.
                     resource.data?.let { movie ->
                         adapter.setMovieDetail(movie)
                         if (!isTablet) {
@@ -63,6 +70,7 @@ class DetailFragment : BaseFragment() {
                     }
                 }
                 Resource.Status.LOADING -> {
+                    // Show loading animation.
                     shimmerFrameLayout.visibility = View.VISIBLE
                     recyclerView.visibility = View.GONE
                 }

@@ -15,6 +15,11 @@ import kotlinx.android.synthetic.main.item_detail_header.view.*
 import kotlinx.android.synthetic.main.item_movie.view.textViewDescription
 import kotlinx.android.synthetic.main.item_movie.view.textViewTitle
 
+/**
+ * Responsible for laying out movie details in a recycler view. First, it renders movie name,
+ * description etc. as an item. And then it renders casts in their own rows separately. So, this
+ * adapter has two item types: detail header and casts.
+ */
 class DetailAdapter(private val picasso: Picasso) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var movieTitle: String? = null
@@ -33,7 +38,7 @@ class DetailAdapter(private val picasso: Picasso) : RecyclerView.Adapter<Recycle
             // Use this method for vector backward compatibility.
             val placeholder = AppCompatDrawableManager.get().getDrawable(view.context, R.drawable.ic_actor_placeholder)
 
-            // Display avatar.
+            // Display avatar or placeholder image.
             if (!TextUtils.isEmpty(actor.imageUrl)) {
                 picasso.load(actor.imageUrl)
                     .transform(CircleTransform())
