@@ -10,6 +10,9 @@ import kotlinx.android.synthetic.main.view_toolbar.*
  */
 abstract class BaseFragment : Fragment() {
 
+    /**
+     * Setup toolbar with title and back button, if necessary.
+     */
     fun setupToolbar(title: String? = null, hasBackButton: Boolean = false) {
         activity?.let {activity ->
             (activity as AppCompatActivity).setSupportActionBar(toolbar)

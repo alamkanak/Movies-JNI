@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Movies</string>
     <string name="last_updated">Last updated at %d</string>
-    <string name="rating">%.01f/10</string>
+    <string name="rating">%d/10</string>
     <string name="casts">CASTS</string>
     <string name="age">Age: %d</string>
     <string name="hint_movie_select">Please select a movie from the list on the left</string>

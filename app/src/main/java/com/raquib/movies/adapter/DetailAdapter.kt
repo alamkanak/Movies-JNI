@@ -59,7 +59,7 @@ class DetailAdapter(private val picasso: Picasso) : RecyclerView.Adapter<Recycle
         fun bind(movieTitle: String, movieDescription: String, movieScore: Float) {
             view.textViewTitle.text = movieTitle
             view.ratingBar.rating = 5*movieScore/10
-            view.textViewRating.text = view.context.getString(R.string.rating, movieScore)
+            view.textViewRating.text = view.context.getString(R.string.rating, movieScore.toInt())
             view.textViewDescription.text = movieDescription
         }
     }

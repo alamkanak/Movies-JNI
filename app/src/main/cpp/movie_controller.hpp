@@ -1,5 +1,9 @@
 //
-// Created by Raquib-ul Alam on 2/22/2020.
+//  MovieController.hpp
+//  Highrise
+//
+//  Created by Jimmy Xu on 12/19/18.
+//  Copyright © 2019 Highrise. All rights reserved.
 //
 
 #ifndef MOVIES_MOVIE_CONTROLLER_HPP

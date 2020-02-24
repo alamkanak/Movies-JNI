@@ -69,6 +69,7 @@ class MovieFragment : BaseFragment() {
             }
         })
 
+        // Setup toolbar.
         activity?.let {
             setupToolbar()
         }
@@ -90,7 +91,7 @@ class MovieFragment : BaseFragment() {
             }
         })
 
-        // Restore selected position in the list.
+        // After orientation/configuration change, restore selected position in the list.
         if (isTablet) {
             selectedPosition = savedInstanceState?.getInt(KEY_SELECTED_POSITION, selectedPosition) ?: selectedPosition
             if (selectedPosition >= 0) {

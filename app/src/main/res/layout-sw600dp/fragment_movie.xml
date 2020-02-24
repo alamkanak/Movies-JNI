@@ -11,7 +11,7 @@
 
     <FrameLayout
         android:id="@+id/frameLayoutListContainer"
-        android:layout_width="@dimen/master_width"
+        android:layout_width="@dimen/left_pane_width"
         android:layout_height="match_parent"
         android:layout_below="@id/toolbarContainer">
 
