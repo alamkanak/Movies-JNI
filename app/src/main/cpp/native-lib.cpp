@@ -35,6 +35,17 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
     return JNI_VERSION_1_6;
 }
 
+JNIEXPORT void JNICALL JNI_OnUnload(JavaVM* vm, void* reserved) {
+    JNIEnv* env;
+    if (vm->GetEnv(reinterpret_cast<void**>(&env), JNI_VERSION_1_6) != JNI_OK) {
+        return;
+    }
+
+    env->DeleteGlobalRef(jclass_movie);
+    env->DeleteGlobalRef(jclass_detail);
+    env->DeleteGlobalRef(jclass_actor);
+}
+
 extern "C" JNIEXPORT jobjectArray JNICALL Java_com_raquib_movies_utils_JniHelper_getMovies(JNIEnv *env, jobject) {
     const std::vector<movies::Movie *> movies = controller->getMovies();
     jobjectArray jmovies = env->NewObjectArray(movies.size(), jclass_movie, 0);
