@@ -30,6 +30,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    signingConfigs {
+        // Putting sensitive keystore here for sharing purposes. Ideally, this should never be
+        // here and CI should be responsible for providing this information.
+        releaseConfig {
+            storeFile file("keystore.jks")
+            storePassword("W5{#xU")
+            keyAlias "key0"
+            keyPassword "W5{#xU"
+        }
+    }
+
     externalNativeBuild {
         cmake {
             path "src/main/cpp/CMakeLists.txt"
