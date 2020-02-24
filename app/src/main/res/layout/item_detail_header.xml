@@ -15,7 +15,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         tools:text="Top Gun"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/text_dark"/>
 
     <androidx.appcompat.widget.AppCompatRatingBar
         android:id="@+id/ratingBar"
@@ -34,7 +35,8 @@
         android:layout_height="wrap_content"
         tools:text="9/10"
         android:layout_toRightOf="@id/ratingBar"
-        android:layout_below="@id/textViewTitle"/>
+        android:layout_below="@id/textViewTitle"
+        android:textColor="@color/text_light"/>
 
     <TextView
         android:id="@+id/textViewDescription"
@@ -42,7 +44,8 @@
         android:layout_height="wrap_content"
         tools:text="As students at the United States Navy's elite fighter weapons school compete to be best in the class, one daring young pilot learns a few things from a civilian instructor that are not taught in the classroom."
         android:layout_below="@id/ratingBar"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:textColor="@color/text_light"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -50,6 +53,7 @@
         android:text="@string/casts"
         android:layout_below="@id/textViewDescription"
         android:textStyle="bold"
+        android:textColor="@color/text_light"
         android:layout_marginTop="20dp"/>
 
 </RelativeLayout>

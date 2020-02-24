@@ -35,7 +35,8 @@
             tools:text="Last updated at 100"
             android:layout_marginBottom="4dp"
             android:layout_below="@id/textViewTitle"
-            android:layout_toLeftOf="@id/imageViewIndicator"/>
+            android:layout_toLeftOf="@id/imageViewIndicator"
+            android:textColor="@color/text_light"/>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageViewIndicator"
