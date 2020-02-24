@@ -17,7 +17,7 @@ class MovieViewModel(application: Application, private val movieRepository: Movi
 
     init {
         moviesLiveData.postValue(Resource.loading())
-        viewModelScope.launch(Dispatchers.Default) {
+        viewModelScope.launch(Dispatchers.IO) {
             moviesLiveData.postValue(Resource.success(movieRepository.getMovies()))
         }
     }

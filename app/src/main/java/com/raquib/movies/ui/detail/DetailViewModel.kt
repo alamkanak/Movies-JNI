@@ -17,7 +17,7 @@ class DetailViewModel(application: Application, private val movieRepository: Mov
 
     fun getMovieDetail(movieName: String): LiveData<Resource<MovieDetail>> {
         movieDetailLiveData.postValue(Resource.loading())
-        viewModelScope.launch(Dispatchers.Default) {
+        viewModelScope.launch(Dispatchers.IO) {
             movieDetailLiveData.postValue(Resource.success(movieRepository.getMovieDetail(movieName)))
         }
         return movieDetailLiveData

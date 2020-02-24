@@ -2,9 +2,6 @@ package com.raquib.movies.utils
 
 import com.raquib.movies.model.Movie
 import com.raquib.movies.model.MovieDetail
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class JniHelper {
@@ -13,10 +10,8 @@ class JniHelper {
 
     companion object {
         init {
-            GlobalScope.launch(Dispatchers.Default) {
-                Timber.d("Init native lib")
-                System.loadLibrary("native-lib")
-            }
+            Timber.d("Init native lib")
+            System.loadLibrary("native-lib")
         }
     }
 }
