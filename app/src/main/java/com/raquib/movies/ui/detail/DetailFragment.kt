@@ -50,6 +50,9 @@ class DetailFragment : BaseFragment() {
             }
         }
 
+        // Setup toolbar.
+        setupToolbar(getString(R.string.app_name), true)
+
         // Display movie detail and loading screen.
         viewModel.getMovieDetail(args.movieName).observe(viewLifecycleOwner, Observer { resource ->
             when (resource.getStatus()) {
@@ -64,6 +67,7 @@ class DetailFragment : BaseFragment() {
                         adapter.setMovieDetail(movie)
                         if (!isTablet) {
                             activity?.let {
+                                // Change toolbar title.
                                 setupToolbar(movie.name, true)
                             }
                         }
