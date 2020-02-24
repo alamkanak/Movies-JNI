@@ -8,7 +8,7 @@
 
     <include
         android:id="@+id/toolbarContainer"
-        layout="@layout/toolbar"/>
+        layout="@layout/view_toolbar"/>
 
     <include
         android:layout_width="match_parent"

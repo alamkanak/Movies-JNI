@@ -9,7 +9,7 @@
 
     <include
         android:id="@+id/toolbarContainer"
-        layout="@layout/toolbar"/>
+        layout="@layout/view_toolbar"/>
 
     <include layout="@layout/view_shimmer"
         tools:visibility="gone"/>

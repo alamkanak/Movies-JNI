@@ -3,7 +3,7 @@ package com.raquib.movies.ui
 import android.text.TextUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.toolbar.*
+import kotlinx.android.synthetic.main.view_toolbar.*
 
 /**
  * The parent class of all fragments allowing them to customize the toolbar.
