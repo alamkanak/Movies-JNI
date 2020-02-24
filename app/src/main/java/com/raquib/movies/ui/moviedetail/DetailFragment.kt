@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -13,14 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.raquib.movies.R
 import com.raquib.movies.adapter.DetailAdapter
 import com.raquib.movies.model.Resource
-import com.raquib.movies.utils.setupToolbar
+import com.raquib.movies.ui.BaseFragment
 import kotlinx.android.synthetic.main.fragment_detail.*
-import kotlinx.android.synthetic.main.toolbar.*
 import kotlinx.android.synthetic.main.view_shimmer.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class DetailFragment : Fragment() {
+class DetailFragment : BaseFragment() {
 
     private val viewModel: DetailViewModel by viewModel()
     private val args: DetailFragmentArgs by navArgs()
@@ -49,7 +47,7 @@ class DetailFragment : Fragment() {
             }
         }
 
-        // Display movie detail.
+        // Display movie detail and loading screen.
         viewModel.getMovieDetail(args.movieName).observe(viewLifecycleOwner, Observer { resource ->
             when (resource.getStatus()) {
                 Resource.Status.SUCCESS -> {
@@ -59,7 +57,7 @@ class DetailFragment : Fragment() {
                         adapter.setMovieDetail(movie)
                         if (!isTablet) {
                             activity?.let {
-                                setupToolbar(it, toolbar, movie.name, true)
+                                setupToolbar(movie.name, true)
                             }
                         }
                     }

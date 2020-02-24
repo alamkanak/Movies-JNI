@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -16,15 +15,14 @@ import com.raquib.movies.adapter.MovieAdapter
 import com.raquib.movies.adapter.MovieClickListener
 import com.raquib.movies.model.Movie
 import com.raquib.movies.model.Resource
+import com.raquib.movies.ui.BaseFragment
 import com.raquib.movies.utils.VerticalSpaceItemDecoration
-import com.raquib.movies.utils.setupToolbar
 import kotlinx.android.synthetic.main.fragment_movie.*
-import kotlinx.android.synthetic.main.toolbar.*
 import kotlinx.android.synthetic.main.view_shimmer.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class MovieFragment : Fragment() {
+class MovieFragment : BaseFragment() {
 
     private var selectedPosition: Int = -1
     private val viewModel: MovieViewModel by viewModel()
@@ -43,8 +41,7 @@ class MovieFragment : Fragment() {
         // Setup recycler view.
         activity?.let {
             val viewManager = LinearLayoutManager(it)
-            val dividerItemDecoration =
-                VerticalSpaceItemDecoration(recyclerView.context, R.dimen.divider)
+            val dividerItemDecoration = VerticalSpaceItemDecoration(recyclerView.context, R.dimen.divider)
             recyclerView.apply {
                 setHasFixedSize(true)
                 layoutManager = viewManager
@@ -70,7 +67,7 @@ class MovieFragment : Fragment() {
         })
 
         activity?.let {
-            setupToolbar(it, toolbar)
+            setupToolbar()
         }
 
         // Observe movies from data source. And show them in the list.

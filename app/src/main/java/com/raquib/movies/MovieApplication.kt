@@ -33,7 +33,7 @@ class MovieApplication : Application() {
         if (BuildConfig.DEBUG) {
             Timber.plant(object : Timber.DebugTree() {
                 override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
-                    super.log(priority, "MOVIESLOG_" + tag!!, message, t)
+                    super.log(priority, "MOVIESLOG_$tag", message, t)
                 }
             })
         }

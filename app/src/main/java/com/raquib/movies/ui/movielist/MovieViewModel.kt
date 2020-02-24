@@ -9,7 +9,6 @@ import com.raquib.movies.model.Movie
 import com.raquib.movies.model.Resource
 import com.raquib.movies.repo.MovieRepository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class MovieViewModel(application: Application, private val movieRepository: MovieRepository) : AndroidViewModel(application) {
@@ -18,11 +17,10 @@ class MovieViewModel(application: Application, private val movieRepository: Movi
 
     init {
         moviesLiveData.postValue(Resource.loading())
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.Default) {
             moviesLiveData.postValue(Resource.success(movieRepository.getMovies()))
         }
     }
 
     fun getMovies(): LiveData<Resource<List<Movie>>> = moviesLiveData
-
 }
